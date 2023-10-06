@@ -1,48 +1,30 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "../MLX42/include/MLX42/MLX42.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
+/*   Updated: 2023/10/06 17:37:48 by namoreir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#define WIDTH 500
-#define HEIGHT 500
+#include "so_long.h"
 
-typedef struct s_def
-{
-	mlx_t *mlx;
-	mlx_image_t *image[3];
-	mlx_texture_t *png;
-} t_def;
-
-void ft_put_pixel(uint32_t color, mlx_image_t *image)
-{
-	int32_t x = 0;
-	int32_t y = 0;
-	while (x < image->width && y < image->height)
-	{
-		mlx_put_pixel(image, x, y, color);
-		x++;
-		if(x == image->width && y < image->height)
-		{	
-			x = 0;
-			y++;
-		}
-	}
-}
 void ft_hook(void* param)
 {
 	t_def *pt = param;
 
-	if (mlx_is_key_down(pt->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(pt->mlx);
 	if (mlx_is_key_down(pt->mlx, MLX_KEY_UP))
-		pt->image[2]->instances[0].y -= 5;
+		pt->image[1]->instances[0].y -= 5;
 	if (mlx_is_key_down(pt->mlx, MLX_KEY_DOWN))
-		pt->image[2]->instances[0].y += 5;
+		pt->image[1]->instances[0].y += 5;
 	if (mlx_is_key_down(pt->mlx, MLX_KEY_LEFT))
-		pt->image[2]->instances[0].x -= 5;
+		pt->image[1]->instances[0].x -= 5;
 	if (mlx_is_key_down(pt->mlx, MLX_KEY_RIGHT))
-		pt->image[2]->instances[0].x += 5;
-		printf("%d\n", pt->image[2]->instances[0].x);
+		pt->image[1]->instances[0].x += 5;
+		// printf("%d\n", pt->image[1]->instances[0].x);
 		
 }
 
@@ -51,37 +33,15 @@ int32_t main(int32_t argc, const char* argv[])
 	t_def *def;
 		
 	def = malloc(sizeof(t_def));
-	def->mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
-	def->image[0] = mlx_new_image(def->mlx, 50, 50);
-	def->image[1] = mlx_new_image(def->mlx, 50, 50);
-	def->png = mlx_load_png("./chess-pieces-16x16-sprites/individual-sprites/piece1.png");
-	def->image[2] = mlx_texture_to_image(def->mlx, def->png); 
-
-	ft_put_pixel(0xF15FAFFF, def->image[0]);
-	ft_put_pixel(0xF1FFFFFF, def->image[1]);
-	int x = 0;
-	int y = 0;
-	while(y < 400)
-	{
-		while(x < 400)
-		{
-			if ((y / 50) % 2 != 0)
-			{
-				mlx_image_to_window(def->mlx, def->image[1], x, y);
-				mlx_image_to_window(def->mlx, def->image[0], x+50, y);
-			}
-			else
-			{	
-				mlx_image_to_window(def->mlx, def->image[0], x, y);
-				mlx_image_to_window(def->mlx, def->image[1], x+50, y);
-			}
-			x += 100;
-		}
-		x = 0;
-		y += 50;
-	}
-	mlx_image_to_window(def->mlx, def->image[2], 0, 50);
+	def->mlx = mlx_init(WIDTH, HEIGHT, "So_long", true);
+	def->png[0] = mlx_load_png("./sprites/Background.png");
+	def->image[0] = mlx_texture_to_image(def->mlx, def->png[0]);
+	def->png[1] = mlx_load_png("./sprites/player1.png");
+	def->image[1] = mlx_texture_to_image(def->mlx, def->png[1]);
+	mlx_image_to_window(def->mlx, def->image[1], 100, 100);
+	mlx_image_to_window(def->mlx, def->image[0], 0, 0);
 	mlx_loop_hook(def->mlx, ft_hook, def);
+	// mlx_loop_hook(def->mlx, ft_player, def->mlx);
 	mlx_loop(def->mlx);
 	mlx_terminate(def->mlx);
 	return (EXIT_SUCCESS);
