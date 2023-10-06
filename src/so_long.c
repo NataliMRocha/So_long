@@ -28,6 +28,23 @@ void ft_put_pixel(uint32_t color, mlx_image_t *image)
 		}
 	}
 }
+void ft_hook(void* param)
+{
+	t_def *pt = param;
+
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(pt->mlx);
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_UP))
+		pt->image[2]->instances[0].y -= 5;
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_DOWN))
+		pt->image[2]->instances[0].y += 5;
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_LEFT))
+		pt->image[2]->instances[0].x -= 5;
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_RIGHT))
+		pt->image[2]->instances[0].x += 5;
+		printf("%d\n", pt->image[2]->instances[0].x);
+		
+}
 
 int32_t main(int32_t argc, const char* argv[])
 {
@@ -64,6 +81,7 @@ int32_t main(int32_t argc, const char* argv[])
 		y += 50;
 	}
 	mlx_image_to_window(def->mlx, def->image[2], 0, 50);
+	mlx_loop_hook(def->mlx, ft_hook, def);
 	mlx_loop(def->mlx);
 	mlx_terminate(def->mlx);
 	return (EXIT_SUCCESS);
