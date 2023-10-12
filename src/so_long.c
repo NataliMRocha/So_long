@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/06 17:37:48 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:50:22 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void ft_hook(void* param)
 {
 	t_def *pt = param;
 
-	if (mlx_is_key_down(pt->mlx, MLX_KEY_UP))
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_UP) || mlx_is_key_down(pt->mlx, MLX_KEY_W))
 		pt->image[1]->instances[0].y -= 5;
-	if (mlx_is_key_down(pt->mlx, MLX_KEY_DOWN))
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_DOWN) || mlx_is_key_down(pt->mlx, MLX_KEY_S))
 		pt->image[1]->instances[0].y += 5;
-	if (mlx_is_key_down(pt->mlx, MLX_KEY_LEFT))
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_LEFT) || mlx_is_key_down(pt->mlx, MLX_KEY_A))
 		pt->image[1]->instances[0].x -= 5;
-	if (mlx_is_key_down(pt->mlx, MLX_KEY_RIGHT))
+	if (mlx_is_key_down(pt->mlx, MLX_KEY_RIGHT) || mlx_is_key_down(pt->mlx, MLX_KEY_D))
 		pt->image[1]->instances[0].x += 5;
-		// printf("%d\n", pt->image[1]->instances[0].x);
+	// printf("%d\n", pt->image[1]->instances[0].x);
 		
 }
 
@@ -34,16 +34,9 @@ int32_t main(int32_t argc, const char* argv[])
 		
 	def = malloc(sizeof(t_def));
 	def->mlx = mlx_init(WIDTH, HEIGHT, "So_long", true);
-	def->png[0] = mlx_load_png("./sprites/Background.png");
-	def->image[0] = mlx_texture_to_image(def->mlx, def->png[0]);
-	def->png[1] = mlx_load_png("./sprites/player1.png");
-	def->image[1] = mlx_texture_to_image(def->mlx, def->png[1]);
-	mlx_image_to_window(def->mlx, def->image[1], 100, 100);
-	mlx_image_to_window(def->mlx, def->image[0], 0, 0);
+	ft_load(def);
 	mlx_loop_hook(def->mlx, ft_hook, def);
-	// mlx_loop_hook(def->mlx, ft_player, def->mlx);
 	mlx_loop(def->mlx);
 	mlx_terminate(def->mlx);
 	return (EXIT_SUCCESS);
-
 }

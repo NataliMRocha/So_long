@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/06 16:27:20 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:40:51 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ struct s_def{
 
 void ft_player(void* param);
 void ft_hook(void* param);
+void ft_load(void* param);
 
 #endif

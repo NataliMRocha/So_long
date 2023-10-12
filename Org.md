@@ -1,16 +1,16 @@
 # Achar e baixar sprites:
-Personagem (com animação) OK
-Inimigo (com animação) OK
-Coletáveis
-BG OK
+Personagem (com animação) **OK**
+Inimigo (com animação) **OK**
+Coletáveis **OK**
+BG **OK**
+Detalhes **OK**
 Paredes
-Portal
-Detalhes (?)
+Portal 
 
 # Código:
-Colocar o BG na tela
+Colocar o BG na tela  **OK**
+Colocar o Personagem **OK**
 Colocar paredes
-Colocar o Personagem
 Colocar portal
 Colocar Coletáveis
 Colocar Inimigo
