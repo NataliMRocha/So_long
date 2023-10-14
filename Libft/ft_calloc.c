@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 19:54:22 by namoreir         ###   ########.fr       */
+/*   Created: 2023/07/22 19:29:15 by namoreir          #+#    #+#             */
+/*   Updated: 2023/08/09 14:31:59 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int32_t	main(int32_t argc, const char *argv[])
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_def *def;
+	void	*alloc_mem;
+	size_t	total_size;
 
-	def = malloc(sizeof(t_def));
-	ft_init(&def);
-	mlx_loop_hook(def->mlx, ft_hook, def);
-	mlx_loop(def->mlx);
-	ft_close(&def);
-	free(def);
-	return (EXIT_SUCCESS);
+	if (nmemb == 0 || size == 0)
+		return (malloc(0));
+	total_size = nmemb * size;
+	if (total_size / size != nmemb)
+		return (NULL);
+	alloc_mem = malloc(total_size);
+	if (!alloc_mem)
+		return (NULL);
+	ft_bzero(alloc_mem, total_size);
+	return (alloc_mem);
 }

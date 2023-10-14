@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 19:54:22 by namoreir         ###   ########.fr       */
+/*   Created: 2023/07/20 12:32:49 by namoreir          #+#    #+#             */
+/*   Updated: 2023/07/21 16:01:59 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int32_t	main(int32_t argc, const char *argv[])
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_def *def;
+	unsigned char	*p_s1;
+	unsigned char	*p_s2;
+	unsigned int	i;
 
-	def = malloc(sizeof(t_def));
-	ft_init(&def);
-	mlx_loop_hook(def->mlx, ft_hook, def);
-	mlx_loop(def->mlx);
-	ft_close(&def);
-	free(def);
-	return (EXIT_SUCCESS);
+	p_s1 = (unsigned char *)s1;
+	p_s2 = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n)
+	{
+		if (p_s1[i] != p_s2[i])
+			return (p_s1[i] - p_s2[i]);
+		i++;
+	}
+	return (0);
 }

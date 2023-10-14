@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 19:54:22 by namoreir         ###   ########.fr       */
+/*   Created: 2023/07/17 18:58:05 by namoreir          #+#    #+#             */
+/*   Updated: 2023/09/03 17:52:21 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int32_t	main(int32_t argc, const char *argv[])
+size_t	ft_strlen(const char *s)
 {
-	t_def *def;
+	size_t	length;
 
-	def = malloc(sizeof(t_def));
-	ft_init(&def);
-	mlx_loop_hook(def->mlx, ft_hook, def);
-	mlx_loop(def->mlx);
-	ft_close(&def);
-	free(def);
-	return (EXIT_SUCCESS);
+	length = 0;
+	if (!s)
+		return (length);
+	while (s[length] != '\0')
+		length++;
+	return (length);
 }

@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 19:54:22 by namoreir         ###   ########.fr       */
+/*   Created: 2023/08/02 19:10:03 by namoreir          #+#    #+#             */
+/*   Updated: 2023/08/02 19:19:29 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int32_t	main(int32_t argc, const char *argv[])
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_def *def;
-
-	def = malloc(sizeof(t_def));
-	ft_init(&def);
-	mlx_loop_hook(def->mlx, ft_hook, def);
-	mlx_loop(def->mlx);
-	ft_close(&def);
-	free(def);
-	return (EXIT_SUCCESS);
+	if (lst == NULL)
+		return ;
+	del(lst->content);
+	free(lst);
+	return ;
 }

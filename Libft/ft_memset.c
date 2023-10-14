@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 19:54:22 by namoreir         ###   ########.fr       */
+/*   Created: 2023/07/17 19:23:10 by namoreir          #+#    #+#             */
+/*   Updated: 2023/07/20 15:36:17 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int32_t	main(int32_t argc, const char *argv[])
+void	*ft_memset(void *s, int c, size_t n)
 {
-	t_def *def;
+	unsigned char	*p_s;
+	unsigned char	c_n;
 
-	def = malloc(sizeof(t_def));
-	ft_init(&def);
-	mlx_loop_hook(def->mlx, ft_hook, def);
-	mlx_loop(def->mlx);
-	ft_close(&def);
-	free(def);
-	return (EXIT_SUCCESS);
+	p_s = (unsigned char *)s;
+	c_n = (unsigned char)c;
+	while (n-- > 0)
+	{
+		*p_s = c_n;
+		p_s++;
+	}
+	return (s);
 }

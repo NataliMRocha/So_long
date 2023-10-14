@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 15:59:28 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 19:54:22 by namoreir         ###   ########.fr       */
+/*   Created: 2023/07/18 12:36:06 by namoreir          #+#    #+#             */
+/*   Updated: 2023/07/20 15:27:47 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int32_t	main(int32_t argc, const char *argv[])
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_def *def;
+	unsigned char	*p_dest;
+	unsigned char	*p_src;
 
-	def = malloc(sizeof(t_def));
-	ft_init(&def);
-	mlx_loop_hook(def->mlx, ft_hook, def);
-	mlx_loop(def->mlx);
-	ft_close(&def);
-	free(def);
-	return (EXIT_SUCCESS);
+	p_dest = (unsigned char *)dest;
+	p_src = (unsigned char *)src;
+	if (p_dest == p_src)
+		return (dest);
+	if (p_dest < p_src)
+	{
+		while (n--)
+			*p_dest++ = *p_src++;
+	}
+	else
+	{
+		p_dest += n;
+		p_src += n;
+		while (n--)
+			*--p_dest = *--p_src;
+	}
+	return (dest);
 }

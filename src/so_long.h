@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/13 18:44:55 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:49:49 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,32 +19,50 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "../MLX42/include/MLX42/MLX42.h"
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1200
+# define HEIGHT 600
 
 typedef struct s_map	t_map;
 struct s_map{
-	char	**buffer;
+	char	**map;
 	char	**validate;
+	int		x;
+	int		y;
+	int		player;
+	int		exit;
 	int		collectable;
-	int		exitpoint;
-	int		startpoint;
-	int		w;
-	int		h;
+	int		x_init;
+	int		y_init;
+	int		collected;
+	bool	escapable;
+};
+
+typedef struct s_sprite	t_sprite;
+struct s_sprite{
+	mlx_texture_t *bg;
+	mlx_image_t *bg_1;
+	mlx_texture_t *player;
+	mlx_image_t *player_1;
+	mlx_texture_t *collectible;
+	mlx_image_t *collectible_1;
+	mlx_texture_t *wall;
+	mlx_image_t *wall_1;
+	mlx_texture_t *portal;
+	mlx_image_t *portal_1;
 };
 
 typedef struct s_def	t_def;
 struct s_def{
-	mlx_t *mlx;
-	mlx_image_t *image[5];
-	mlx_texture_t *png[5];
-	t_map map;
-	
+	mlx_t			*mlx;
+	t_map			*map;
+	t_sprite		*sprites;
 };
 
 void ft_player(void* param);
-void ft_hook(void* param);
-void ft_load(void* param);
+void	ft_hook(void *param);
+void ft_load(t_def **def);
 void read_map(t_def *def, char *path);
+void ft_init(t_def **def);
+void ft_close(t_def **def);
 
 #endif

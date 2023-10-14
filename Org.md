@@ -10,7 +10,7 @@ Portal
 # Código:
 Colocar o BG na tela  **OK**
 Colocar o Personagem **OK**
-Colocar paredes
+Colocar paredes **OK**
 Colocar portal
 Colocar Coletáveis
 Colocar Inimigo
@@ -33,3 +33,16 @@ Game over
 Você venceu
 
 
+Player 
+Width 60 x Heidth 64
+
+Coletável 
+Width 25 x Heidth 38
+
+Parede 
+Width 30 x 30 Heidth 
+
+Portal 
+Width 130 x Heidth 104
+
+x = 150 y = 150
