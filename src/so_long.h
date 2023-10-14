@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 19:49:49 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/14 20:08:35 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@
 # define WIDTH 1200
 # define HEIGHT 600
 
+
 typedef struct s_map	t_map;
 struct s_map{
-	char	**map;
+	char	**buffer;
 	char	**validate;
+	int		w;
+	int		h;
 	int		x;
 	int		y;
 	int		player;
-	int		exit;
+	int		exitpoint;
+	int		startpoint;
 	int		collectable;
 	int		x_init;
 	int		y_init;
@@ -64,5 +68,7 @@ void ft_load(t_def **def);
 void read_map(t_def *def, char *path);
 void ft_init(t_def **def);
 void ft_close(t_def **def);
+void	create_matrix(char ***map, char *path, int w, int h);
+void	read_line(t_def **def, char *path);
 
 #endif
