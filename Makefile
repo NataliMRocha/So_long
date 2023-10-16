@@ -6,7 +6,7 @@ BIN		:= ./bin/
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS	:= $(addprefix ./src/, so_long.c move.c load_sprites.c close.c teste.c)
+SRCS	:= $(addprefix ./src/, so_long.c move.c init.c close.c map.c)
 OBJS	:= $(patsubst ./src/%.c,$(BIN)%.o,$(SRCS))
 
 all: libmlx $(BIN) $(NAME)

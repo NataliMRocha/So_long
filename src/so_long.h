@@ -6,22 +6,20 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/16 10:22:38 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:40:20 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "../MLX42/include/MLX42/MLX42.h"
-# define WIDTH 1200
+# define WIDTH 1300
 # define HEIGHT 600
-
+# define BUFFER_SIZE 32000
 
 typedef struct s_map	t_map;
 struct s_map{
@@ -29,8 +27,6 @@ struct s_map{
 	char	**validate;
 	int		w;
 	int		h;
-	int		x;
-	int		y;
 	int		player;
 	int		exitpoint;
 	int		startpoint;
@@ -62,13 +58,14 @@ struct s_def{
 	t_sprite		*sprites;
 };
 
-void ft_player(void* param);
+void	ft_player(void* param);
 void	ft_hook(void *param);
-void ft_load(t_def **def);
-void read_map(t_def *def, char *path);
-void ft_init(t_def **def);
-void ft_close(t_def **def);
-void	create_matrix(char ***map, const char *argv, int w, int h);
+void	ft_load(t_def **def);
+void	read_map(t_def *def, char *path);
+void	ft_init(t_def **def);
+void	ft_close(t_def **def);
+void	create_matrix(t_def **def, const char *argv, int w, int h);
 void	read_line(t_def **def, const char *argv);
+void	map_to_window(t_def **def);
 
 #endif
