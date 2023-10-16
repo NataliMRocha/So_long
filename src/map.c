@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:59:30 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/16 17:39:22 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:33:37 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	read_line(t_def **def, const char *argv)
 	if ((*def)->map->w)
 		(*def)->map->h = size / (*def)->map->w;
 	close(fd);
+}
+void	validate_map(const char *buffer)
+{
+	
 }
 
 void	create_matrix(t_def **def, const char *argv, int w, int h)
@@ -62,33 +66,34 @@ void	create_matrix(t_def **def, const char *argv, int w, int h)
 	close(fd);
 }
 
-void	map_to_window(t_def **def)
+void	get_position(t_def **def)
 {
 	int x;
 	int y;
-	int line = 0;
 	int col = 0;
-	
 	x = 0;
 	y = 0;
 	while(x < (*def)->map->h * 100)
 	{
 		y = 0;
-		line = 0;
 		while(y < (*def)->map->w * 100)
 		{
-			if ((*def)->map->buffer[col][line] == '1')
-				mlx_image_to_window((*def)->mlx, (*def)->sprites->wall_1, y, x);
-			if ((*def)->map->buffer[col][line] == 'P')
-				mlx_image_to_window((*def)->mlx, (*def)->sprites->player_1, y, x);
-			if ((*def)->map->buffer[col][line] == 'C')
-				mlx_image_to_window((*def)->mlx, (*def)->sprites->collectible_1, y, x);
-			if ((*def)->map->buffer[col][line] == 'E')
-				mlx_image_to_window((*def)->mlx, (*def)->sprites->portal_1, y, x);
+			put_in_pos((*def)->map->buffer[x / 100][y / 100], \
+								def, y, x);
 			y += 100;
-			line++;
 		}
 		x += 100;
-		col++;
 	}
+}
+
+void	put_in_pos(char pos, t_def **def, int x, int y)
+{
+	if (pos == '1')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->wall_1, x, y);
+	if (pos == 'C'|| pos == 'c')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->collectible_1, x, y);
+	if (pos == 'E' || pos == 'e')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->portal_1, x, y);
+	if (pos == 'P' || pos == 'p')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->player_1, x, y);
 }

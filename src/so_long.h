@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/16 16:40:20 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:57:23 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	ft_init(t_def **def);
 void	ft_close(t_def **def);
 void	create_matrix(t_def **def, const char *argv, int w, int h);
 void	read_line(t_def **def, const char *argv);
-void	map_to_window(t_def **def);
+void	get_position(t_def **def);
+void	put_in_pos(char pos, t_def **def, int x, int y);
 
 #endif
