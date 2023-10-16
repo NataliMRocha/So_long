@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:31:34 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/14 20:00:51 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:26:47 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void ft_init(t_def **def)
 
 void ft_load(t_def **def)
 {
-	(*def)->sprites = malloc(sizeof(t_sprite));
+	(*def)->sprites = calloc(1, sizeof(t_sprite));
 	(*def)->sprites->bg = mlx_load_png("./sprites/bg/BG.png");
 	(*def)->sprites->bg_1 = mlx_texture_to_image((*def)->mlx, (*def)->sprites->bg);
 	(*def)->sprites->player = mlx_load_png("./sprites/player/Player_1.png");
