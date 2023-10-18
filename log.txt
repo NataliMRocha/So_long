@@ -1,20 +1,20 @@
-==394347== Memcheck, a memory error detector
-==394347== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==394347== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==394347== Command: ./so_long ./maps/valid_map_1.ber
-==394347== Parent PID: 342149
-==394347== 
-==394347== 
-==394347== HEAP SUMMARY:
-==394347==     in use at exit: 288,426 bytes in 2,773 blocks
-==394347==   total heap usage: 66,497 allocs, 63,724 frees, 56,404,244 bytes allocated
-==394347== 
-==394347== LEAK SUMMARY:
-==394347==    definitely lost: 0 bytes in 0 blocks
-==394347==    indirectly lost: 0 bytes in 0 blocks
-==394347==      possibly lost: 0 bytes in 0 blocks
-==394347==    still reachable: 0 bytes in 0 blocks
-==394347==         suppressed: 288,426 bytes in 2,773 blocks
-==394347== 
-==394347== For lists of detected and suppressed errors, rerun with: -s
-==394347== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+==657051== Memcheck, a memory error detector
+==657051== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==657051== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==657051== Command: ./so_long ./maps/valid_map_1.ber
+==657051== Parent PID: 577215
+==657051== 
+==657051== 
+==657051== HEAP SUMMARY:
+==657051==     in use at exit: 288,426 bytes in 2,773 blocks
+==657051==   total heap usage: 75,126 allocs, 72,353 frees, 57,636,546 bytes allocated
+==657051== 
+==657051== LEAK SUMMARY:
+==657051==    definitely lost: 0 bytes in 0 blocks
+==657051==    indirectly lost: 0 bytes in 0 blocks
+==657051==      possibly lost: 0 bytes in 0 blocks
+==657051==    still reachable: 0 bytes in 0 blocks
+==657051==         suppressed: 288,426 bytes in 2,773 blocks
+==657051== 
+==657051== For lists of detected and suppressed errors, rerun with: -s
+==657051== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)

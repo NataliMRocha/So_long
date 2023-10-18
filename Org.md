@@ -13,14 +13,14 @@ Colocar o Personagem **OK**
 Colocar paredes **OK**
 Colocar portal
 Colocar Coletáveis
-Colocar Inimigo
 Fazer o personagem andar
-Fazer as colisões do personagem com as paredes
-Fazer o personagem coletar 
-Fazer ele entrar no portal
 Ler um mapa
 Validar o Mapa
 Gerar o mapa: BG + paredes + coletáveis + portal + personagem
+Fazer as colisões do personagem com as paredes
+Fazer o personagem coletar 
+Fazer ele entrar no portal
+Colocar Inimigo
 Fazer o personagem morrer quando colidir com inimigos
 
 # Criar tela de início:
@@ -43,6 +43,6 @@ Parede
 Width 30 x 30 Heidth 
 
 Portal 
-Width 130 x Heidth 104
+Width 100 x Heidth 100
 
 x = 150 y = 150
