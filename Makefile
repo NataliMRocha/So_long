@@ -7,7 +7,7 @@ BIN		:= ./bin/
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I ./libft
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm ./libft/libft.a
-SRCS	:= $(addprefix ./src/, so_long.c move.c init.c close.c map.c)
+SRCS	:= $(addprefix ./src/, so_long.c move.c init.c close.c map.c messages.c validation.c)
 OBJS	:= $(patsubst ./src/%.c,$(BIN)%.o,$(SRCS))
 
 all: libft libmlx $(BIN) $(NAME)

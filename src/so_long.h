@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/17 21:20:23 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:20:22 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define WIDTH 1400
-# define HEIGHT 700
+# define WALL_SIZE 100
+# define PLAYER_HEIGHT 64
+# define PLAYER_WIDTH 60
 # define BUFFER_SIZE 32000
 
 typedef struct s_map	t_map;
@@ -60,20 +61,25 @@ struct					s_def
 	mlx_t		*mlx;
 	t_map		*map;
 	t_sprite	*sprites;
+	int			count_moves;
 };
 
-void	validate_map(int argc, const char *argv, t_def **def);
-int		validate_map2(t_def **def, int x, int y);
-int		messages(int i);
-void	ft_player(void *param);
-void	ft_hook(void *param);
-void	ft_load(t_def **def);
-void	read_map(t_def *def, char *path);
-void	ft_init(t_def **def);
-void	ft_close(t_def **def);
-void	create_matrix(t_def **def, const char *argv, char flag);
+void	validation(t_def **def, int argc, const char *argv);
+void	input_validation(int argc, const char *argv, t_def **def);
 void	read_line(t_def **def, const char *argv);
+void	create_matrix(t_def **def, const char *argv, char flag);
+int		validate_map(t_def **def, int x, int y);
+int		validate_map2(t_def **def);
+void	init(t_def **def);
+void	load(t_def **def);
 void	get_position(t_def **def);
 void	put_in_pos(char pos, t_def **def, int x, int y);
+int		messages(int i);
+int		move_y(t_def **def, int i);
+int		move_x(t_def **def, int i);
+void	close_game(t_def **def, int flag);
+void	free_assets(t_def **def);
+void	ft_free_validation(t_def **def, int i);
+void	ft_hook(mlx_key_data_t keydata, t_def **def);
 
 #endif

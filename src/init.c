@@ -6,19 +6,19 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:31:34 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/17 21:30:59 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/20 20:19:12 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_init(t_def **def)
+void	init(t_def **def)
 {
 	int	width;
 	int	height;
 	
-	width = (*def)->map->w * 100;
-	height = (*def)->map->h * 100;
+	width = (*def)->map->w * WALL_SIZE;
+	height = (*def)->map->h * WALL_SIZE;
 	if (width > 1700)
 		width = 1700;
 	if (height > 900)
@@ -27,12 +27,14 @@ void	ft_init(t_def **def)
 	if (!(*def)->mlx)
 	{
 		mlx_close_window((*def)->mlx);
-		ft_close(def);
+		close_game(def, 1);
 	}
-	ft_load(def);
+	load(def);
+	get_position(def);
+	mlx_key_hook((*def)->mlx, (void *)ft_hook, (void *)def);
 }
 
-void	ft_load(t_def **def)
+void	load(t_def **def)
 {
 	(*def)->sprites = ft_calloc(1, sizeof(t_sprite));
 	(*def)->sprites->bg = mlx_load_png("./sprites/bg/BG.png");
@@ -55,3 +57,33 @@ void	ft_load(t_def **def)
 	mlx_image_to_window((*def)->mlx, (*def)->sprites->bg_1, 0, 0);
 }
 
+void	get_position(t_def **def)
+{
+	int x;
+	int y;
+
+	x = 0;
+	while(x < (*def)->map->h * WALL_SIZE)
+	{
+		y = 0;
+		while(y < (*def)->map->w * WALL_SIZE)
+		{
+			put_in_pos((*def)->map->buffer[x / WALL_SIZE][y / WALL_SIZE], \
+								def, y, x);
+			y += WALL_SIZE;
+		}
+		x += WALL_SIZE;
+	}
+}
+
+void	put_in_pos(char pos, t_def **def, int x, int y)
+{
+	if (pos == '1')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->wall_1, x, y);
+	if (pos == 'C')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->collectible_1, x, y);
+	if (pos == 'E')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->portal_1, x, y);
+	if (pos == 'P')
+		mlx_image_to_window((*def)->mlx, (*def)->sprites->player_1, x, y);
+}
