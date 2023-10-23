@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/20 18:20:22 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/23 18:56:04 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@
 # define WALL_SIZE 100
 # define PLAYER_HEIGHT 64
 # define PLAYER_WIDTH 60
-# define BUFFER_SIZE 32000
 
 typedef struct s_map	t_map;
 struct					s_map
 {
 	char	**buffer;
-	char	**validate;
+	char	**copy;
 	int		w;
 	int		h;
 	int		player;
@@ -37,7 +36,8 @@ struct					s_map
 	int		x_init;
 	int		y_init;
 	int		collected;
-	bool	escapable;
+	int		check_coin;
+	int		exitable;
 };
 
 typedef struct s_sprite	t_sprite;
@@ -47,12 +47,14 @@ struct					s_sprite
 	mlx_image_t		*bg_1;
 	mlx_texture_t	*player;
 	mlx_image_t		*player_1;
-	mlx_texture_t	*collectible;
+	mlx_texture_t	*coin;
 	mlx_image_t		*collectible_1;
 	mlx_texture_t	*wall;
 	mlx_image_t		*wall_1;
 	mlx_texture_t	*portal;
 	mlx_image_t		*portal_1;
+	mlx_texture_t	*logo;
+	mlx_image_t		*logo_1;
 };
 
 typedef struct s_def	t_def;
@@ -66,7 +68,7 @@ struct					s_def
 
 void	validation(t_def **def, int argc, const char *argv);
 void	input_validation(int argc, const char *argv, t_def **def);
-void	read_line(t_def **def, const char *argv);
+void	set_size(t_def **def);
 void	create_matrix(t_def **def, const char *argv, char flag);
 int		validate_map(t_def **def, int x, int y);
 int		validate_map2(t_def **def);
@@ -75,11 +77,14 @@ void	load(t_def **def);
 void	get_position(t_def **def);
 void	put_in_pos(char pos, t_def **def, int x, int y);
 int		messages(int i);
-int		move_y(t_def **def, int i);
-int		move_x(t_def **def, int i);
-void	close_game(t_def **def, int flag);
+int		move_y(t_def **def, size_t i);
+int		move_x(t_def **def, size_t i);
+void	close_game(t_def **def, int flag, int msg);
 void	free_assets(t_def **def);
-void	ft_free_validation(t_def **def, int i);
+void	ft_free_validation(t_def **def, int i, int flag);
 void	ft_hook(mlx_key_data_t keydata, t_def **def);
+void	is_collectable(t_def **def);
+void	end_game(t_def **def);
+void	flood_fill(t_def **def, int x, int y);
 
 #endif

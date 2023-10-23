@@ -1,6 +1,6 @@
 NAME	:= so_long
 CC		:= gcc
-CFLAGS	:= -g3 #-Wextra -Wall -Werror
+CFLAGS	:= -g3 -Wextra -Wall -Werror
 LIBMLX	:= ./MLX42
 LIBFT	:= ./libft
 BIN		:= ./bin/

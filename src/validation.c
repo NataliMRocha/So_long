@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:59:42 by natali            #+#    #+#             */
-/*   Updated: 2023/10/20 18:08:26 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:45:33 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,21 @@ void	validation(t_def **def, int argc, const char *argv)
 	input_validation(argc, argv, def);
 	i = validate_map(def, 0, 0);
 	if (i != 0)
-	{	
-		close_game(def, 2);
-		exit(messages(5));
-	}
+		close_game(def, 2, i);
 	i = validate_map2(def);
 	if (i != 0)
-	{
-		close_game(def, 2);
-		exit(messages(i));
-	}
+		close_game(def, 2, i);
+	(*def)->map->check_coin = 0;
+	(*def)->map->exitable = 0;
+	flood_fill(def, (*def)->map->x_init, (*def)->map->y_init);
+	if (((*def)->map->check_coin != (*def)->map->collectable)
+		|| (*def)->map->exitable == 0 || (*def)->map->h == (*def)->map->w)
+		close_game(def, 2, 5);
 }
 
 void	input_validation(int argc, const char *argv, t_def **def)
 {
-	int	i;
-
-	if(argc != 2)
+	if (argc != 2)
 		exit(messages(1));
 	if (ft_strncmp(&argv[ft_strlen(argv) - 4], ".ber", 4) != 0)
 		exit(messages(2));
@@ -48,69 +46,74 @@ void	input_validation(int argc, const char *argv, t_def **def)
 		free((*def));
 		exit(messages(0));
 	}
-	(*def)->map->w = 0;
-	read_line(def, argv);
 	create_matrix(def, argv, 'b');
-	create_matrix(def, argv, 'v');
-}
-
-void	read_line(t_def **def, const char *argv)
-{
-	int		fd;
-	int		size;
-	int		i;
-	char	buffer[BUFFER_SIZE];
-
-	fd = open(argv, O_RDONLY);
-	if(fd == -1)
-		ft_free_validation(def, 4);
-	size = read(fd, buffer, BUFFER_SIZE);
-	if(size == 0)
-		ft_free_validation(def, 3);
-	i = -1;
-	while (buffer[++i])
-	{
-		if (buffer[i] == '\n')
-			break ;
-		(*def)->map->w++;
-	}
-	if ((*def)->map->w)
-		(*def)->map->h = size / (*def)->map->w;
-	close(fd);
-}
-
-void	create_matrix(t_def **def, const char *argv, char flag)
-{
-	int		i;
-	int		j;
-	int		fd;
-	char	buff[BUFFER_SIZE];
-	
-	fd = open(argv, O_RDONLY);
-	j = read(fd, buff, BUFFER_SIZE);
-	buff[j] = '\0';
-	if (flag == 'v')
-	{	
-		(*def)->map->validate = ft_split(buff, '\n');
-		if ((*def)->map->validate == NULL)
-			ft_free_validation(def, 0);
-	}
-	else
-	{
-		(*def)->map->buffer = ft_split(buff, '\n');
-		if ((*def)->map->buffer == NULL)
-			ft_free_validation(def, 0);
-	}
-	close(fd);
+	create_matrix(def, argv, 'c');
+	set_size(def);
+	(*def)->map->collected = 0;
 	(*def)->map->player = 0;
 	(*def)->map->collectable = 0;
 	(*def)->map->exitpoint = 0;
 	(*def)->count_moves = 0;
 }
 
-void	ft_free_validation(t_def **def, int i)
+void	create_matrix(t_def **def, const char *argv, char flag)
 {
-	free((*def)->map);
-	free((*def));
-	exit(messages(i));
+	int		i;
+	int		fd;
+	char	buff[BUFFER_SIZE];
+
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		ft_free_validation(def, 4, 1);
+	i = read(fd, buff, BUFFER_SIZE);
+	if (i == 0)
+		ft_free_validation(def, 3, 1);
+	buff[i] = '\0';
+	if (flag == 'c')
+	{
+		(*def)->map->copy = ft_split(buff, '\n');
+		if ((*def)->map->copy == NULL)
+			ft_free_validation(def, 0, 1);
+	}
+	else if (flag == 'b')
+	{
+		(*def)->map->buffer = ft_split(buff, '\n');
+		if ((*def)->map->buffer == NULL)
+			ft_free_validation(def, 0, 2);
+	}
+	close(fd);
+}
+
+void	set_size(t_def **def)
+{
+	int	i;
+
+	i = 0;
+	while ((*def)->map->buffer[0][i])
+		i++;
+	(*def)->map->w = i;
+	(*def)->map->h = 0;
+	i = -1;
+	while ((*def)->map->buffer[++i])
+		(*def)->map->h++;
+}
+
+void	ft_free_validation(t_def **def, int i, int flag)
+{
+	if (flag == 1)
+	{
+		free((*def)->map);
+		free((*def));
+		exit(messages(i));
+	}
+	if (flag == 2)
+	{
+		flag = -1;
+		while (++flag < (*def)->map->h)
+			free((*def)->map->buffer[flag]);
+		free((*def)->map->buffer);
+		free((*def)->map);
+		free((*def));
+		exit(messages(i));
+	}
 }
