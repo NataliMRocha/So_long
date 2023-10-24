@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 19:36:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/23 18:52:46 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:56:02 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	free_assets(t_def **def)
 	mlx_delete_texture((*def)->sprites->wall);
 	mlx_delete_image((*def)->mlx, (*def)->sprites->portal_1);
 	mlx_delete_texture((*def)->sprites->portal);
+	mlx_delete_texture((*def)->sprites->logo);
 }

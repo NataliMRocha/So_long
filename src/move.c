@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:58:47 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/23 18:55:48 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:57:39 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_hook(mlx_key_data_t keydata, t_def **def)
 	if (keydata.key == MLX_KEY_ESCAPE)
 	{
 		mlx_close_window((*def)->mlx);
+		close_game(def, 1, 12);
 		return ;
 	}
 	else if (((keydata.key == MLX_KEY_UP) || (keydata.key == MLX_KEY_W))
