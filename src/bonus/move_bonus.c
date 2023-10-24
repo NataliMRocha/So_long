@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:58:47 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/24 18:17:45 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:59:12 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,15 +134,12 @@ int	is_enemy(t_def **def)
 	{
 		x_enemy = (*def)->sprites->enemy_1->instances[i].x;
 		y_enemy = (*def)->sprites->enemy_1->instances[i].y;
-		if ((x_player < x_enemy && x_player + 60 > (x_enemy + 50))
-			&& (y_player < y_enemy && y_player + 64 > (y_enemy + 50)))
+		if (x_player < x_enemy && (x_player + PLAYER_WIDTH) > (x_enemy + 50)
+			&& y_player < y_enemy && (y_player + PLAYER_HEIGHT) > (y_enemy + 50))
 		{
 			close_game(def, 1, 13);
-			
 			exit(13);
 		}
-		else
-			return (true);
 	}
-	return (false);
+	return (true);
 }

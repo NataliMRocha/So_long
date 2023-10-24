@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:59:30 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/24 18:27:49 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 19:13:16 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	validate_map(t_def **def, int x, int y)
 				(*def)->map->exitpoint++;
 			else if ((*def)->map->map[y][x] == 'C')
 				(*def)->map->collectable++;
+			else if ((*def)->map->map[y][x] == 'D')
+				(*def)->map->enemy++;
 		}
 	}
 	return (0);
