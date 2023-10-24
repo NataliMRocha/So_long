@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   messages.c                                         :+:      :+:    :+:   */
+/*   messages_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 20:31:49 by natali            #+#    #+#             */
-/*   Updated: 2023/10/24 15:55:07 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 20:12:16 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	messages(int i)
 {
 	const char	*message[14] = {
 		"Dynamic memory allocation has failed =/",
-		"Please provide one and only one argument.\n"
-		"It should be something like: \"./so_long map.ber\"",
+		"Please provide one and only one argument.\n",
 		"This file isn't valid.\nMake sure it's a file with '.ber' extension.",
 		"This file is empty, help me to help you!",
 		"Can't opening file. Please check the path of file.",
