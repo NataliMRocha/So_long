@@ -12,11 +12,18 @@ OBJS	:= $(patsubst ./src/%.c,$(BIN)%.o,$(SRCS))
 
 all: libft libmlx $(BIN) $(NAME)
 
+LIBFT_CHECK = $(shell ar -t ./libft/libft.a)
+LIBMLX_CHECK = $(shell ar -t $(LIBMLX)/build/libmlx42.a)
+
+ifeq ($(LIBFT_CHECK),)
 libft:
 	@make -sC ./libft
+endif
 
+ifeq ($(LIBMLX_CHECK),)
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+endif
 
 $(BIN)%.o: ./src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"

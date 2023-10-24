@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:59:42 by natali            #+#    #+#             */
-/*   Updated: 2023/10/24 12:11:17 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:39:27 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,25 @@ void	validation(t_def **def, int argc, const char *argv)
 	input_validation(argc, argv, def);
 	i = validate_map(def, 0, 0);
 	if (i != 0)
+	{
 		close_game(def, 2, i);
+		exit(i);
+	}
 	i = validate_map2(def);
 	if (i != 0)
+	{
 		close_game(def, 2, i);
+		exit(i);
+	}
 	(*def)->map->check_coin = 0;
 	(*def)->map->exitable = 0;
 	flood_fill(def, (*def)->map->x_init, (*def)->map->y_init);
 	if (((*def)->map->check_coin != (*def)->map->collectable)
 		|| (*def)->map->exitable == 0 || (*def)->map->h == (*def)->map->w)
+	{
 		close_game(def, 2, 5);
+		exit(5);
+	}
 }
 
 void	input_validation(int argc, const char *argv, t_def **def)

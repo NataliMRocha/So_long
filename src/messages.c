@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 20:31:49 by natali            #+#    #+#             */
-/*   Updated: 2023/10/23 20:58:35 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:18:35 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ int	messages(int i)
 		"It should be something like: \"./so_long map.ber\"",
 		"This file isn't valid.\nMake sure it's a file with '.ber' extension.",
 		"This file is empty, help me to help you!",
-		"Error while opening file. Please check the path of file.",
-		"Your map don't have all the necessary sttuf.\n"
+		"Can't opening file. Please check the path of file.",
+		"Your map isn't valid.\n"
 		"You need 1 Player(P), 1 Exit point(E), at least 1 collectable(C),\n"
 		"be surrounded by walls(1).\nYou can use the maps suggested in ./maps!",
 		"You need at least one and only one player(P).\n"
 		"Joquinha doesn't accept clones!",
-		"You need at least one exit point. You don't want to get stuck, right?",
-		"You don't wanna have fun?? You need to be collectables!",
+		"You need at least one and only one exit point!",
+		"You don't wanna have fun?? You need collectables!",
 		"Your map needs to be rectangular.",
 		"Problem during mlx initialize",
-		"You have arrived at the oasis! Congratulations!!!",
-		"You didn't like my game =/"
+		"You didn't like my game =/",
+		"You have arrived at the oasis! Congratulations!!!"
 	};
 
 	if (i <= 10)

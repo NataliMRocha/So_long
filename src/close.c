@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 19:36:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/24 12:29:07 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:08:39 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	close_game(t_def **def, int flag, int msg)
 		free((*def)->map->copy);
 		free((*def)->map);
 	}
+	display_msg(msg, def);
 	if (flag <= 1)
 	{
 		free_assets(def);
@@ -35,7 +36,6 @@ void	close_game(t_def **def, int flag, int msg)
 		mlx_terminate((*def)->mlx);
 	}
 	free((*def));
-	messages(msg);
 	return ;
 }
 
@@ -52,4 +52,12 @@ void	free_assets(t_def **def)
 	mlx_delete_image((*def)->mlx, (*def)->sprites->portal_1);
 	mlx_delete_texture((*def)->sprites->portal);
 	mlx_delete_texture((*def)->sprites->logo);
+}
+
+void	display_msg(int msg, t_def **def)
+{
+	if (msg <= 11)
+		messages(msg);
+	if (msg == 12 && (*def)->sprites->portal_1->enabled == true)
+		messages(msg);
 }

@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/24 12:10:19 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 13:59:14 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ void	ft_hook(mlx_key_data_t keydata, t_def **def);
 void	is_collectable(t_def **def);
 void	end_game(t_def **def);
 void	flood_fill(t_def **def, int x, int y);
+void	display_msg(int msg, t_def **def);
 
 #endif
