@@ -1,7 +1,7 @@
 NAME		:= so_long
 NAME_BONUS	:= so_long_bonus
 CC			:= gcc
-CFLAGS		:= -Wextra -Wall -Werror -g3
+CFLAGS		:= -Wextra -Wall -Werror
 LIBMLX		:= ./MLX42
 LIBFT		:= ./libft
 BIN			:= ./bin/
