@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:31:34 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/23 16:19:46 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:20:12 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init(t_def **def)
 	}
 	load(def);
 	get_position(def);
-	mlx_key_hook((*def)->mlx, (void *)ft_hook, (void *)def);
 }
 
 void	load(t_def **def)

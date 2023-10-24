@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 14:58:47 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/23 20:57:39 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:29:49 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_hook(mlx_key_data_t keydata, t_def **def)
 	{
 		mlx_close_window((*def)->mlx);
 		close_game(def, 1, 12);
-		return ;
+		exit(12);
 	}
 	else if (((keydata.key == MLX_KEY_UP) || (keydata.key == MLX_KEY_W))
 		&& keydata.action == MLX_PRESS && move_y(def, 1))
@@ -136,5 +136,5 @@ void	end_game(t_def **def)
 	if ((x_player > x_exit && x_player < (x_exit + 100)) && (y_player > y_exit
 			&& y_player < (y_exit + 100))
 		&& (*def)->sprites->portal_1->enabled == true)
-		close_game(def, 1, 11);
+		return (mlx_close_window((*def)->mlx));
 }

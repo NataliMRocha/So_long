@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:59:42 by natali            #+#    #+#             */
-/*   Updated: 2023/10/23 20:45:33 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:11:17 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ void	input_validation(int argc, const char *argv, t_def **def)
 		free((*def));
 		exit(messages(0));
 	}
-	create_matrix(def, argv, 'b');
-	create_matrix(def, argv, 'c');
+	create_matrix(def, argv);
 	set_size(def);
 	(*def)->map->collected = 0;
 	(*def)->map->player = 0;
@@ -56,7 +55,7 @@ void	input_validation(int argc, const char *argv, t_def **def)
 	(*def)->count_moves = 0;
 }
 
-void	create_matrix(t_def **def, const char *argv, char flag)
+void	create_matrix(t_def **def, const char *argv)
 {
 	int		i;
 	int		fd;
@@ -69,18 +68,12 @@ void	create_matrix(t_def **def, const char *argv, char flag)
 	if (i == 0)
 		ft_free_validation(def, 3, 1);
 	buff[i] = '\0';
-	if (flag == 'c')
-	{
-		(*def)->map->copy = ft_split(buff, '\n');
-		if ((*def)->map->copy == NULL)
-			ft_free_validation(def, 0, 1);
-	}
-	else if (flag == 'b')
-	{
-		(*def)->map->buffer = ft_split(buff, '\n');
-		if ((*def)->map->buffer == NULL)
-			ft_free_validation(def, 0, 2);
-	}
+	(*def)->map->buffer = ft_split(buff, '\n');
+	if ((*def)->map->buffer == NULL)
+		ft_free_validation(def, 0, 1);
+	(*def)->map->copy = ft_split(buff, '\n');
+	if ((*def)->map->copy == NULL)
+		ft_free_validation(def, 0, 2);
 	close(fd);
 }
 

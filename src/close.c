@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 19:36:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/23 20:56:02 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:29:07 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	close_game(t_def **def, int flag, int msg)
 		mlx_terminate((*def)->mlx);
 	}
 	free((*def));
-	exit(messages(msg));
+	messages(msg);
+	return ;
 }
 
 void	free_assets(t_def **def)

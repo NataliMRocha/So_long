@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:57:56 by namoreir          #+#    #+#             */
-/*   Updated: 2023/10/23 18:56:04 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:10:19 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ struct					s_def
 void	validation(t_def **def, int argc, const char *argv);
 void	input_validation(int argc, const char *argv, t_def **def);
 void	set_size(t_def **def);
-void	create_matrix(t_def **def, const char *argv, char flag);
+void	create_matrix(t_def **def, const char *argv);
 int		validate_map(t_def **def, int x, int y);
 int		validate_map2(t_def **def);
 void	init(t_def **def);
