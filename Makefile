@@ -24,20 +24,13 @@ ifdef WITH_BONUS
 	NAME = $(NAME_BONUS)
 endif
 
-all: libft libmlx $(BIN) $(NAME)
+all: libft/libft.a $(LIBMLX)/build/libmlx42.a $(BIN) $(NAME)
 
-LIBFT_CHECK = $(shell ar -t ./libft/libft.a)
-LIBMLX_CHECK = $(shell ar -t $(LIBMLX)/build/libmlx42.a)
-
-ifeq ($(LIBFT_CHECK), )
-libft:
+libft/libft.a:
 	@make -sC ./libft
-endif
 
-ifeq ($(LIBMLX_CHECK), )
-libmlx:
+$(LIBMLX)/build/libmlx42.a:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
-endif
 
 $(BIN)%.o: ./src/mandatory/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
@@ -56,13 +49,13 @@ bonus:
 
 clean:
 	rm -rf $(BIN)
-	rm -rf $(LIBMLX)/build
 	@make clean -sC ./libft 
 
 fclean: clean
 	rm -rf $(NAME) $(NAME_BONUS)
 	rm -rf ./libft/libft.a
+	rm -rf $(LIBMLX)/build
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean fclean re libmlx libft
+.PHONY: all clean fclean re

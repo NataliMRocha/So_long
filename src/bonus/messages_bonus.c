@@ -6,7 +6,7 @@
 /*   By: namoreir <namoreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 20:31:49 by natali            #+#    #+#             */
-/*   Updated: 2023/10/24 20:12:16 by namoreir         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:26:54 by namoreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	messages(int i)
 		"Your map isn't valid.\n"
 		"You need 1 Player(P), 1 Exit point(E), at least 1 collectable(C),\n"
 		"be surrounded by walls(1).\nYou can use the maps suggested in ./maps!",
-		"You need at least one and only one player(P).\n"
-		"Joquinha doesn't accept clones!",
+		"You need at least one and only one player(P).\n",
 		"You need at least one and only one exit point!",
 		"You don't wanna have fun?? You need collectables!",
 		"Your map needs to be rectangular.",
