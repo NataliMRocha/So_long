@@ -68,7 +68,8 @@ Then you can run this commands below
 $> make
 $> ./so_long ./map/path_of_the_map
 ```
-• For moves the player you can use the arrow keys or WASD
-• You need to collect all the collectibles and only then the oasis will appear
-• The objective is to reach the end of the game with the fewest moves 
-• You can use any valid map on the directory maps or you can create new maps
+
+• For moves the player you can use the arrow keys or WASD  
+• You need to collect all the collectibles and only then the oasis will appear  
+• The objective is to reach the end of the game with the fewest moves   
+• You can use any valid map on the directory maps or you can create new maps  
