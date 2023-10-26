@@ -1,16 +1,22 @@
 # :clipboard: So_long | 42 SP
-- Actual Status : finished.
-- Result        : Approved with 105 points ✅
+- Actual Status: finished.
+- Result      : Approved with 105 points ✅
 
-   So_long is the fifthy project at 42.
+  :us: So_long is the fifthy project at 42.
 This project is a very small 2D game. Its purpose is to make you work with textures, sprites,
-and some other very basic gameplay elements..
-  	:brazil:So_long é o quinto projeta da 42.
-  Esse projeto é um joquinho em 2D. O objetivo é trabalhar com texturas, sprites, e alguns
-  elementos básicos de gameplay! 
+and some other very basic gameplay elements...
 
+  	:brazil: So_long é o quinto projeta da 42.
+  Esse projeto é um joquinho em 2D. O objetivo é trabalhar com texturas, sprites, e alguns
+  elementos básicos de gameplay!
+  
+<div align="center">
+   
 ![So_long](https://github.com/NataliMRocha/gifs/blob/master/So_long.gif)
 
+</div>
+
+#
 #### We need to implement the following rules:
 
 • The player’s goal is to collect every collectible present on the map, then escape
