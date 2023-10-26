@@ -1,10 +1,13 @@
 # :clipboard: So_long | 42 SP
 - Actual Status : finished.
-- Result        : Approved with 105 points by moulinette (the 42 tester) ✅
-  
-  So_long is the fifthy project at 42.
+- Result        : Approved with 105 points ✅
+
+   So_long is the fifthy project at 42.
 This project is a very small 2D game. Its purpose is to make you work with textures, sprites,
 and some other very basic gameplay elements..
+  	:brazil:So_long é o quinto projeta da 42.
+  Esse projeto é um joquinho em 2D. O objetivo é trabalhar com texturas, sprites, e alguns
+  elementos básicos de gameplay! 
 
 #### We need to implement the following rules:
 
@@ -34,13 +37,14 @@ be valid.
 
 | Files | Description |
 | :------: | :---------: |
-| ``ft_putnbr.c`` | Contains the functions that deal with hexadecimal, decimal, integers numbers and pointers. |
-| ``ft_printf.c`` | Contains the principal function: the function who deal with the type of data. Also contains the function who checks if is a conversion to deal with and the functions to deal with char or strings|
-| ``ft_printf.h`` | The header with functions libraries and prototypes. |
-| ``ft_printf_bonus.c`` | Contains the principal function: the function who deal with the type of data. Also contains the function who checks if is a conversion to deal with and the functions to deal with char or strings|
-| ``ft_putnbr_bonus.c`` | Contains the functions that deal with hexadecimal, decimal, integers numbers and pointers. |
-| ``ft_flags_bonus.c`` | Contains the functions that deal with the flags. |
-| ``ft_printf_bonus.h`` | The header with functions libraries and prototypes. |
+| ``so_long.h`` | The header with functions libraries and prototypes.|
+| ``so_long.c`` | Contains the main. |
+| ``validation.c`` | Contains the functions that validate the input. |
+| ``map.c`` | Contains the fuctions to validate and allocate de map.|
+| ``init.h`` | Contains the functions who load images, create the window and put this images in window in accordance with the map .|
+| ``move.c`` | Contains the functions who make the player moves or collect thing, also check if the game is over.|
+| ``messages.c`` | Contains the messages of error or end game.|
+| ``close.c`` | Contains the functions who free all allocate memory and close the game.|
 | ``Makefile`` | The automatizated compilator|
 
 ## :star: Bonus
@@ -51,10 +55,12 @@ Make the player lose when they touch an enemy patrol
 In order to use the MLX42 of Codam, you must follow the rules in this repository
 https://github.com/codam-coding-college/MLX42
 
-Then you 
+Then you can run this commands below 
 ``` shell
-$> git clone https://github.com/NataliMRocha/Printf-42.git
-$> cd Printf-42
 $> make
+$> ./so_long ./map/path_of_the_map
 ```
-
+• For moves the player you can use the arrow keys or WASD
+• You need to collect all the collectibles and only then the oasis will appear
+• The objective is to reach the end of the game with the fewest moves 
+• You can use any valid map on the directory maps or you can create new maps
