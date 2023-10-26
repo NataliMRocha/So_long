@@ -9,6 +9,8 @@ and some other very basic gameplay elements..
   Esse projeto é um joquinho em 2D. O objetivo é trabalhar com texturas, sprites, e alguns
   elementos básicos de gameplay! 
 
+![So_long](https://github.com/NataliMRocha/gifs/blob/master/So_long.gif)
+
 #### We need to implement the following rules:
 
 • The player’s goal is to collect every collectible present on the map, then escape
